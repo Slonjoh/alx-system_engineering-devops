@@ -1,2 +1,2 @@
 #!/bin/bash
-awk 'NR % 2 == 1' $1
+grep -n "linux" | tr '\n' '\t' | cut -d$'\t' -f2- | tr '\t' '\n'
