@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -n "linux" | tr '\n' '\t' | cut -d$'\t' -f2- | tr '\t' '\n'
+paste -d, - - | cut -d, -f1
