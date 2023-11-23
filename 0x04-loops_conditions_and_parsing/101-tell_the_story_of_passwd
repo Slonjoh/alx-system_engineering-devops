@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # Using a while loop and IFS to generate a story for each user in /etc/passwd
 while IFS=: read -r username _ uid gid info home shell
 do

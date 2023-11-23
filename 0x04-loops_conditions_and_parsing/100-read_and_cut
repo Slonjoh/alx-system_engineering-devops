@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # Using a while loop and read to display username, user id, and home directory path
 while IFS=: read -r username _ uid _ _ home _
 do
