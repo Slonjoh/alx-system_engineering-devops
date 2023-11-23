@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
 # Using a while loop and case statement to display different messages
-count=1
-while [ $count -le 20 ]
+x=1
+while [ $x -le 20 ]
 do
-    case $count in
-        4)
-            echo "$count bad luck from China"
-            ;;
-        9)
-            echo "$count bad luck from Japan"
-            ;;
-        17)
-            echo "$count bad luck from Italy"
-            ;;
-        *)
-            echo $count
-            ;;
+    echo "$x"
+    case $x in
+	4)
+	    echo "bad luck from China"
+	    ;;
+	9)
+	    echo "bad luck from Japan"
+	    ;;
+	17)
+	    echo "bad luck from Italy"
+	    ;;
     esac
-
-    ((count++))
+    ((x++))
 done
