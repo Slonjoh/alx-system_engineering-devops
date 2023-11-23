@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Using a while loop and IFS to generate a story for each user in /etc/passwd
+while IFS=: read -r username _ uid gid info home shell
+do
+    echo "The user $username is part of the $gid gang, lives in $home, and rides $shell."
+    echo "USER ID's place is protected by the passcode $info, more info about the user here: $uid INFO"
+    echo
+done < /etc/passwd
