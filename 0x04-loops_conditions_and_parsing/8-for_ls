@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 # Using a for loop to display directory content in a list format
-for file in *
+for i in *
 do
-    # Check if the file is not a hidden file
-    if [ "${file:0:1}" != "." ]; then
-        # Extract the part of the name after the first dash
-        name_after_dash=$(echo "$file" | cut -d '-' -f 2-)
-
-        # Display the formatted output
-        echo "- $name_after_dash"
-    fi
+    echo "$i" | cut -f 2- -d '-'
 done
