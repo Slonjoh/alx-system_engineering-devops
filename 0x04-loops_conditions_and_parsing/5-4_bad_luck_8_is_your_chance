@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Using a while loop and if statements to display different messages
 count=1
 while [ $count -le 10 ]
