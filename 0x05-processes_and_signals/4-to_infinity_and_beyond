@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Loops To infinity and beyond until Ctrl C
+while true;
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
