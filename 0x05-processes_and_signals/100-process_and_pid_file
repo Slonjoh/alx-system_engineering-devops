@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# # Function to handle termination signals
+pidfile="/var/run/myscript.pid"
+cleanup() {
+    echo "Cleaning up..."
+    rm -f "$pidfile"
+    exit 0
+}
+trap 'cleanup' SIGQUIT SIGTERM
+trap 'echo "Y U no love me?!"; cleanup' SIGINT
+echo $$ > "$pidfile"
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
+trap 'echo "I hate the kill command"; cleanup' SIGTERM
