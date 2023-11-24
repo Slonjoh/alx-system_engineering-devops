@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #Bash script that creates a subprocess
+# shellcheck disable=SC1091
 . /lib/lsb/init-functions
 
 PIDFILE=/var/run/my_process.pid
