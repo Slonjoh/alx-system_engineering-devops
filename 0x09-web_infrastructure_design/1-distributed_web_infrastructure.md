@@ -32,13 +32,14 @@
 
 ## Issues with the Infrastructure:
 * SPOF (Single Point of Failure):
-     The entire infrastructure relies on a single server, making it vulnerable to failure.
+     The load balancer is a single point of failure. If it fails, all traffic distribution is impacted.
 
-* Downtime During Maintenance:
-     Deploying new code may require restarting the web server, causing downtime.
+* Security Issues:
+     No firewall mentioned, which can expose servers to security threats.
+     No HTTPS mentioned, leading to insecure data transmission.
 
-* Cannot Scale if Too Much Incoming Traffic:
-     Limited scalability due to the use of a single server. High traffic may lead to performance issues.
+* No Monitoring:
+     Lack of monitoring tools for tracking server health and performance.
 
 ## Load Balancer:
   Reason: Introducing a load balancer helps distribute incoming traffic among multiple servers. This improves performance, enhances fault tolerance, and ensures better utilization of resources.
