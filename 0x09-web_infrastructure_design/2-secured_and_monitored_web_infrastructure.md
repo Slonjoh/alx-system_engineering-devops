@@ -1,33 +1,33 @@
 # Explanation:
 
-# User's Browser:
+## User's Browser:
     Initiates the request to access www.foobar.com.
 
-# DNS Resolution:
+## DNS Resolution:
     Resolves www.foobar.com to the load balancer's IP.
 
-# Domain Registrar and DNS:
+## Domain Registrar and DNS:
     Manages the domain registration and resolves domain names to IP addresses.
 
-# Web Browser:
+## Web Browser:
     Sends the HTTP request to the Internet.
 
-# Internet:
+## Internet:
     Transmits the HTTP request to the load balancer.
 
-# Load Balancer (SSL Termination):
+## Load Balancer (SSL Termination):
     Terminates SSL to decrypt HTTPS traffic before forwarding it to the servers.
 
-# Firewalls (1, 2, 3):
+## Firewalls (1, 2, 3):
     Provide security by controlling incoming and outgoing network traffic.
 
-# Monitoring Clients:
+## Monitoring Clients:
     Collect performance and health data from servers for analysis.
 
-# Load Balanced Servers with SSL Termination:
+## Load Balanced Servers with SSL Termination:
     Host Nginx, Application Server, and MySQL Database.
 
-# Specifics About the Infrastructure:
+## Specifics About the Infrastructure:
 
     * For Every Additional Element, Why You Are Adding It:
           Firewalls (1, 2, 3): Enhance security by controlling network traffic.
