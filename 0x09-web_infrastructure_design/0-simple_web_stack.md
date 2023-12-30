@@ -1,12 +1,12 @@
-#Explanation:
+# Explanation:
 
-##User's Browser:
+## User's Browser:
      Initiates the request to access www.foobar.com.
 
-##DNS Resolution:
+## DNS Resolution:
      Resolves www.foobar.com to the server's IP address (8.8.8.8).
 
-##Domain Registrar and DNS Server:
+## Domain Registrar and DNS Server:
      Manages the domain registration and resolves domain names to IP addresses.
 
 * Domain Configuration:
@@ -30,7 +30,7 @@
 * MySQL Database:
      Stores and retrieves data required by the application.
 
-##Issues with the Infrastructure:
+## Issues with the Infrastructure:
 * SPOF (Single Point of Failure):
      The entire infrastructure relies on a single server, making it vulnerable to failure.
 
@@ -40,7 +40,7 @@
 * Cannot Scale if Too Much Incoming Traffic:
      Limited scalability due to the use of a single server. High traffic may lead to performance issues.
 
-##Load Balancer:
+## Load Balancer:
   Reason: Introducing a load balancer helps distribute incoming traffic among multiple servers. This improves performance, enhances fault tolerance, and ensures better utilization of resources.
 
 1. Database Primary-Replica Cluster:
