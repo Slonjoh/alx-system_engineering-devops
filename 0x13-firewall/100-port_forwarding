@@ -1,0 +1,60 @@
+#
+# ufw configuration file
+#
+
+# Set the default policy for incoming and outgoing traffic to allow
+# By default, deny (drop) all incoming and outgoing traffic
+#
+DEFAULT_INPUT_POLICY="DROP"
+DEFAULT_OUTPUT_POLICY="ACCEPT"
+DEFAULT_FORWARD_POLICY="DROP"
+
+# Open SSH port
+#
+-A ufw-before-input -p tcp --dport 22 -j ACCEPT
+
+# Allow established connections
+#
+-A ufw-before-input -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+# Forwarding rule to redirect port 8080 to port 80
+#
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+
+# Enable UFW
+#
+-A ufw-after-input -j ufw-logging-deny
+-A ufw-after-output -j ufw-logging-deny
+-A ufw-after-forward -j ufw-logging-deny
+-A ufw-reject-input -j REJECT
+-A ufw-reject-output -j REJECT
+-A ufw-reject-forward -j REJECT
+-A ufw-track-input -p tcp --dport 22 -j ACCEPT
+-A ufw-track-output -p tcp --sport 22 -j ACCEPT
+-A ufw-track-output -p udp --sport 22 -j ACCEPT
+-A ufw-track-output -p icmp --icmp-type destination-unreachable -j ACCEPT
+-A ufw-track-output -p icmp --icmp-type source-quench -j ACCEPT
+-A ufw-track-output -p icmp --icmp-type time-exceeded -j ACCEPT
+-A ufw-track-output -p icmp --icmp-type parameter-problem -j ACCEPT
+-A ufw-track-output -p icmp --icmp-type echo-request -j ACCEPT
+
+# Allow DHCP client to receive responses from DHCP server
+#
+-A ufw-before-input -p udp --sport 68 --dport 67 -j ACCEPT
+-A ufw-before-output -p udp --sport 67 --dport 68 -j ACCEPT
+
+# Allow DNS traffic
+#
+-A ufw-before-input -p udp --dport 53 -j ACCEPT
+-A ufw-before-input -p tcp --dport 53 -j ACCEPT
+
+# Allow HTTP and HTTPS traffic
+#
+-A ufw-before-input -p tcp --dport 80 -j ACCEPT
+-A ufw-before-input -p tcp --dport 443 -j ACCEPT
+
+# Enable logging of dropped packets
+#
+-A ufw-after-input -m limit --limit 3/min --limit-burst 10 -j LOG --log-prefix "[UFW BLOCK] : "
+
+
