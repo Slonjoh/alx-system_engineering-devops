@@ -40,5 +40,5 @@ listen slonjohswe_apps
 	balance roundrobin
 	option httpclose
 	option forwardfor
-	server 483251-web-01 54.237.87.200:80 check
+	server 483251-web-01 3.80.18.238:80 check
 	server 483251-web-02 52.86.189.30:80 check
