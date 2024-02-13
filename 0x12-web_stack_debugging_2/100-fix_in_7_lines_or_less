@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Fixes a web server to run Nginx as the nginx user listening on port 8080.
+
+sudo sed -i 's/user  nginx;/user  nginx nginx;/g' /etc/nginx/nginx.conf
+sudo sed -i '/listen[[:space:]]*80;/c\    listen 8080 default_server;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
