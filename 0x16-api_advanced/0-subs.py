@@ -7,10 +7,17 @@ def number_of_subscribers(subreddit):
     """
     Uses the reddit api to get the numbers of subscribers to a subreddit
     """
-    url = 'https://reddit.com/r/' + subreddit + '/about/.json'
-    headers = {'User-Agent': "lala"}
-    r = requests.get(url, headers=headers)
-    try:
-        return(r.json().get('data').get('subscribers'))
-    except:
-        return(0)
+    subRcheck = requests.get("https://reddit.com/api/search_reddit_names.json",
+                             headers={
+                                 'User-Agent': 'Safari 12.1'
+                             },
+                             params={
+                                 'exact': True,
+                                 'query': subreddit
+                             })
+    if 'error' in subRcheck.json():
+        return 0
+    response = requests.get("https://reddit.com/r/{}/about.json"
+                            .format(subreddit),
+                            headers={'User-Agent': 'Safari 12.1'})
+    return response.json().get('data').get('subscribers')
