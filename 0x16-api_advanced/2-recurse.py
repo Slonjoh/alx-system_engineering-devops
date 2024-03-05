@@ -9,19 +9,21 @@ def recurse(subreddit, after=None, all_results=[]):
     """
     Uses the reddit api to get the numbers of hot posts in a given subreddit
     """
-    param = {}
-    if after is not None:
-        param = {'after': after}
-    url = 'https://reddit.com/r/' + subreddit + '/hot/.json'
-    headers = {'User-Agent': "lala"}
-    r = requests.get(url, headers=headers, params=param)
-    try:
-        new_after = r.json()['data'].get('after')
-        for data in r.json()['data'].get('children'):
-            all_results.append(data['data'].get('title'))
-        if new_after is not None:
-            return(recurse(subreddit, new_after, all_results))
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    params = {'limit': 100, 'after': after} if after else {'limit': 100}
+
+    response = requests.get(url, headers=headers, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        children = data['data']['children']
+        for child in children:
+            hot_list.append(child['data']['title'])
+        after = data['data']['after']
+        if after:
+            return recurse(subreddit, hot_list, after)
         else:
-            return(all_results)
-    except:
-        return(None)
+            return hot_list
+    else:
+        return None

@@ -8,7 +8,6 @@ def number_of_subscribers(subreddit):
     Uses the reddit api to get the numbers of subscribers to a subreddit
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    # Custom User-Agent to prevent Too Many Requests error
     headers = {'User-Agent': 'Mozilla/5.0'}
 
     response = requests.get(url, headers=headers)
