@@ -4,15 +4,13 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    # Custom User-Agent to prevent Too Many Requests error
-    headers = {'User-Agent': 'Mozilla/5.0'}
-
-    response = requests.get(url, headers=headers)
-
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
-    else:
-        return 0
+    """
+    Uses the reddit api to get the numbers of subscribers to a subreddit
+    """
+    url = 'https://reddit.com/r/' + subreddit + '/about/.json'
+    headers = {'User-Agent': "lala"}
+    r = requests.get(url, headers=headers)
+    try:
+        return(r.json().get('data').get('subscribers'))
+    except:
+        return(0)
